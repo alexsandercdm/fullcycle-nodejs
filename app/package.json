@@ -1,0 +1,23 @@
+{
+  "name": "fullcycle-nodejs",
+  "version": "1.0.0",
+  "description": "Fullcycle project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexsandercdm/fullcycle-nodejs.git"
+  },
+  "author": "Alexsander Moura",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexsandercdm/fullcycle-nodejs/issues"
+  },
+  "homepage": "https://github.com/alexsandercdm/fullcycle-nodejs#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql2": "^3.9.1"
+  }
+}

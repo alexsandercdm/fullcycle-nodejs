@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:8.3.0
+    container_name: db
+    command: --innodb-use-native-aio=0
+    networks:
+      - server
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=db
+    volumes:
+      - ./db/data:/var/lib/mysql
+
+  servernode:
+    build: app/.
+    image: servernode:latest
+    container_name: servernode
+    networks:
+      - server
+  
+  
+  proxy-reverse:
+    build: nginx/.
+    image: proxy-reverse:latest
+    restart: always
+    networks:
+      - server
+    ports:
+      - "8080:80"
+
+networks:
+  server:
+    name: server
+    driver: bridge
+    
+    
