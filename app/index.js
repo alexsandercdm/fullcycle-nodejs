@@ -33,8 +33,6 @@ app.get('/', async (req, res) =>  {
                 results.forEach(row => {
                     list += `<li>${row['name']}</li>\n`
                 })
-
-                console.log(list);
                 
                 res.send(`<h1>Full Cycle Rocks!</h1><ul>${list}</ul>`);
                 

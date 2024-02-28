@@ -6,6 +6,7 @@ services:
     container_name: db
     command: --innodb-use-native-aio=0
     restart: always
+    tty: true
     networks:
       - server
     environment:
@@ -19,6 +20,10 @@ services:
     build: app/.
     image: servernode:latest
     container_name: servernode
+    entrypoint: dockerize -wait tcp://db:3306 -timeout 20s docker-entrypoint.sh
+    command: node index.js
+    restart: always
+    tty: true
     networks:
       - server
   
@@ -27,6 +32,7 @@ services:
     build: nginx/.
     image: proxy-reverse:latest
     restart: always
+    tty: true
     networks:
       - server
     ports:
