@@ -2,9 +2,11 @@ version: '3'
 
 services:
   db:
-    image: mysql:8.3.0
+    build: db/mysql
+    image: my-sql:8.3.0
     container_name: db
     command: --innodb-use-native-aio=0
+    restart: always
     networks:
       - server
     environment:
@@ -12,6 +14,7 @@ services:
       - MYSQL_DATABASE=db
     volumes:
       - ./db/data:/var/lib/mysql
+      - ./db/mysql/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
 
   servernode:
     build: app/.

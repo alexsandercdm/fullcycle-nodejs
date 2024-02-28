@@ -10,15 +10,10 @@ const config = {
 
 const mysql = require('mysql2');
 
-const connected = mysql.createConnection(config);
 
-const sql = `INSERT INTO people(name) VALUES ('Alexsander')`;
-connected.query(sql);
-connected.end();
 
 app.get('/inserir/:name', async (req, res) => {
     const connected = mysql.createConnection(config);
-
     const sql = `INSERT INTO people(name) VALUES ('${req.params['name']}')`;
     connected.query(sql);
     connected.end();
@@ -29,9 +24,9 @@ app.get('/inserir/:name', async (req, res) => {
 app.get('/', async (req, res) =>  {
 
     try {
-        let con = mysql.createConnection(config);
+        const connected = mysql.createConnection(config);
         let query = `SELECT * FROM people;`
-        con.query(query, 
+        connected.query(query, 
             function (err, results, fields) {
                 
                 let list = '\n';
@@ -44,7 +39,7 @@ app.get('/', async (req, res) =>  {
                 res.send(`<h1>Full Cycle Rocks!</h1><ul>${list}</ul>`);
                 
             });
-        con.end();
+            connected.end();
 
         
     } catch (error) {
