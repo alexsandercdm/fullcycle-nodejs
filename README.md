@@ -6,3 +6,5 @@ Criei uma rota adicional para inserir nomes no banco de dados, basta passa http:
 Basta passar o nome que deseja inserir. 
 
 Para visualizar o resultado http://localhost:8080
+
+## Atualizei o nome do arquivo para docker-compose.yaml com "d" minúsculo e adicionei o dockerize no container com o node em execução. 
