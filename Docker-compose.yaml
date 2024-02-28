@@ -2,8 +2,7 @@ version: '3'
 
 services:
   db:
-    build: db/mysql
-    image: my-sql:8.3.0
+    image: mysql:8.3.0
     container_name: db
     command: --innodb-use-native-aio=0
     restart: always
