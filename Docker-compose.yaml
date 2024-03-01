@@ -20,13 +20,16 @@ services:
     build: app/.
     image: servernode:latest
     container_name: servernode
-    entrypoint: dockerize -wait tcp://db:3306 -timeout 20s docker-entrypoint.sh
+    entrypoint: ../home/entrypoint.sh
+    # entrypoint: dockerize -wait tcp://db:3306 -timeout 20s docker-entrypoint.sh
     command: node index.js
     restart: always
     tty: true
     networks:
       - server
-  
+    volumes:
+      - ./app:/app
+      - ./entrypoint.sh:/home/entrypoint.sh
   
   proxy-reverse:
     build: nginx/.
